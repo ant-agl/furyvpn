@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="./css/link-font.css">
+  <link rel="stylesheet" href="./css/style.css">
+
+  <title>Личный кабинет</title>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container">
+      <div class="row">
+        <div class="logo">
+          <img src="./img/logo.png" class="logo__img">
+          <span class="logo__text">Fury VPN</span>
+        </div>
+        <ul class="nav__links">
+          <li>
+            <a class="nav__link link" href="./index.html#manual">Инструкция</a>
+          </li>
+          <li>
+            <a class="nav__link link" href="./index.html#tariffs">Тарифы</a>
+          </li>
+          <li>
+            <a class="nav__link link" href="https://t.me/gaborchak" target="_blank">Поддержка</a>
+          </li>
+          <li>
+            <a class="nav__link btn" href="./lk.html">Личный кабинет</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="lk-desktop">
+    <div class="container">
+      <div class="lk">
+        <div class="lk__second">
+          <div class="lk__block">
+            <div class="lk__block-content">
+              <h4 class="lk__subtitle">E-mail:</h4>
+              <p class="lk__text">sdive1337@gmail.com</p>
+            </div>
+            <button class="btn">Управление</button>
+          </div>
+          <div class="lk__block">
+            <img src="./img/lk/qr.png" class="lk__img">
+            <button class="btn">Скачать QR-Код</button>
+          </div>
+          <div class="lk__block">
+            <img src="./img/lk/config.png" class="lk__img">
+            <button class="btn">Скачать конфиг.</button>
+          </div>
+        </div>
+        <div class="lk__main">
+          <h2 class="lk__subscription">Ваша подписка истекает <span>07.04.2023</span></h2>
+          <div class="lk__text">Доступные тарифы</div>
+
+          <div class="lk__tariff">
+            <div class="lk__period">1 месяц</div>
+            <div class="lk__price">198р.</div>
+            <a href="#" class="lk__link"><span>Войти</span></a>
+          </div>
+
+          <div class="lk__tariff">
+            <div class="lk__period">6 месяцев</div>
+            <div class="lk__price">999р.</div>
+            <a href="#" class="lk__link"><span>Войти</span></a>
+          </div>
+
+          <div class="lk__tariff">
+            <div class="lk__period">1 год</div>
+            <div class="lk__price">1999р.</div>
+            <a href="#" class="lk__link"><span>Войти</span></a>
+          </div>
+
+          <form class="form-promocode row">
+            <input type="text" name="promocode" class="lk__input" placeholder="Промокод...">
+            <button class="btn">Применить</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lk-mobile">
+    <div class="container">
+      <h1 class="title">Личный кабинет</h1>
+      <p class="lk__mail">sdive1337@gmail.com</p>
+      <div class="lk__subtitle">QR-Код</div>
+      <img src="./img/lk/qr-mobile.png" class="lk__qr">
+      <a href="#" class="btn lk__btn">Скачать конфигурацию</a>
+      <a href="#" class="btn lk__btn">Скачать бесплатную версию</a>
+
+      <div class="lk__tariffs">
+        <div class="lk__tariff">
+          <div class="lk__period">1 месяц</div>
+          <div class="lk__price">198р.</div>
+          <a href="#" class="lk__link"><span>Войти</span></a>
+        </div>
+
+        <div class="lk__tariff">
+          <div class="lk__period">6 месяцев</div>
+          <div class="lk__price">999р.</div>
+          <a href="#" class="lk__link"><span>Войти</span></a>
+        </div>
+
+        <div class="lk__tariff">
+          <div class="lk__period">1 год</div>
+          <div class="lk__price">1999р.</div>
+          <a href="#" class="lk__link"><span>Войти</span></a>
+        </div>
+      </div>
+
+      <p class="lk__subscription">Подписка до: <span>07.04.2023</span></p>
+
+      <form class="form-promocode row">
+        <input type="text" name="promocode" class="lk__input" placeholder="Промокод...">
+        <button class="btn">Применить</button>
+      </form>
+    </div>
+  </section>
+
+  <script src="./js/jquery.min.js"></script>
+  <script>
+    $('.form-promocode').on('submit', function (e) {
+      e.preventDefault();
+      const data = {
+        promocode: $(this).find('[name="promocode"]').val().trim()
+      }
+      $.ajax({
+        type: "POST",
+        url: '',
+        data,
+        success: data => {
+          console.log(data);
+        },
+        error: xhr => {
+          console.log('Error', xhr);
+        }
+      })
+    });
+  </script>
+</body>
+
+</html>

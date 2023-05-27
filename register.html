@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="./css/link-font.css">
+  <link rel="stylesheet" href="./css/style.css">
+
+  <title>Регистрация</title>
+</head>
+
+<body>
+  <section class="login">
+    <div class="container">
+      <div class="row">
+        <div class="big-logo">
+          <img src="./img/logo-big.png" alt="" class="big-logo__img">
+          <h1 class="big-logo__title">FuryVPN</h1>
+        </div>
+        <div class="form-content">
+          <h1 class="form-content__title">Регистрация</h1>
+          <form class="form" id="register-from">
+            <input type="text" class="form__input" name="login" placeholder="Логин">
+            <input type="password" class="form__input" name="password" placeholder="Пароль">
+            <input type="password" class="form__input" name="password-repeat" placeholder="Повторите пароль">
+            <div class="form__btns">
+              <button class="btn">Регистрация</button>
+              <a href="./login.html" class="link">Уже есть аккаунт?</a>
+            </div>
+          </form>
+          <a href="./forgot.html" class="link form-content__second-link">Забыли пароль?</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="./js/jquery.min.js"></script>
+  <script>
+    $('#register-from').on('submit', function (e) {
+      e.preventDefault();
+      const data = {};
+      $(this).find('input').each((i, input) => {
+        const name = $(input).attr('name').trim();
+        const val = $(input).val().trim();
+        data[name] = val;
+      });
+
+      $.ajax({
+        type: 'POST',
+        url: '',
+        data,
+        success: data => {
+          console.log(data);
+        },
+        error: xhr => {
+          console.log('Error', xhr);
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
