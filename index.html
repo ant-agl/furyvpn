@@ -16,10 +16,10 @@
   <nav class="nav">
     <div class="container">
       <div class="row">
-        <div class="logo">
+        <a href="./index.html" class="logo">
           <img src="./img/logo.png" class="logo__img">
           <span class="logo__text">Fury VPN</span>
-        </div>
+        </a>
         <ul class="nav__links">
           <li>
             <a class="nav__link link" href="#manual">Инструкция</a>
@@ -63,7 +63,17 @@
     <div class="container">
       <div class="why-we__content">
         <h2 class="title">Наш VPN &mdash; лучший на рынке</h2>
-        <img src="./img/main/why_we.png" class="why-we__img">
+
+        <div class="why-we__img-wrap">
+          <div class="why-we__img-block">
+            <img src="./img/main/why_we.png" class="why-we__img-main">
+            <img src="./img/main/1.png" class="why-we__img">
+            <img src="./img/main/2.png" class="why-we__img">
+            <img src="./img/main/3.png" class="why-we__img">
+            <img src="./img/main/4.png" class="why-we__img">
+            <img src="./img/main/5.png" class="why-we__img">
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -187,6 +197,24 @@
     </div>
   </section>
 
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <a href="./index.html" class="logo">
+          <img src="./img/logo.png" class="logo__img">
+          <div>
+            <div class="logo__text">Fury VPN</div>
+            <div class="logo__desc">Самый быстрый в России</div>
+          </div>
+        </a>
+        <div class="footer__links">
+          <a href="./policy.txt" target="_blank">Политика конфиденциальности</a>
+          <a href="./offer.txt" target="_blank">Договор оферты</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
   <script src="./js/jquery.min.js"></script>
   <script>
     // плавный скролл
@@ -196,7 +224,7 @@
       if (href.split('#')[1].trim()) {
         $('html').animate({
           scrollTop: $(href).offset().top
-        }, 300);
+        }, 600);
       }
       return false;
     });
