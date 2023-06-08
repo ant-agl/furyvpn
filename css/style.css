@@ -283,6 +283,10 @@ section {
   border: 2px solid #1a73c7;
   padding: 10px 15px;
   width: 100%;
+  transition: 0.2s;
+}
+.lk__input.error {
+  border-color: #ff5a5a;
 }
 .form-promocode {
   gap: 10px;
@@ -296,6 +300,11 @@ section {
   overflow: hidden;
   margin-top: 15px;
 }
+.lk__period {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .lk__tariff > * {
   width: 100%;
   padding: 10px 20px;
@@ -305,6 +314,18 @@ section {
 }
 .lk__price {
   background-color: #1d84e3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.lk__price::before {
+  content: "";
+  display: inline-block;
+}
+.lk__price::after {
+  content: "";
+  display: inline-block;
+  width: 25px;
 }
 .lk__link {
   text-decoration: none;
@@ -314,6 +335,7 @@ section {
   position: relative;
   transition: 0.2s;
   cursor: pointer;
+  border: none;
 }
 .lk__link::before {
   content: "";
@@ -602,6 +624,40 @@ section {
   padding-top: 155px;
 }
 
+.quick-purchase .title,
+.quick-purchase__desc {
+  text-align: center;
+}
+.quick-purchase__desc {
+  color: #858585;
+  margin-top: 20px;
+}
+.quick-purchase__prices {
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+.quick-purchase__input {
+  max-width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  margin-top: 30px;
+}
+.quick-purchase__subdesc {
+  text-align: center;
+  color: #858585;
+  max-width: 500px;
+  margin: 30px auto 0;
+  font-size: 14px;
+}
+.quick-purchase__subdesc a {
+  color: #fff;
+}
+.quick-purchase .form-promocode {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 .footer {
   padding: 30px 0;
 }
@@ -799,6 +855,14 @@ section {
   }
   .lk__subscription span {
     color: #858585;
+  }
+
+  .lk__tariff_small .lk__period,
+  .lk__tariff_small .lk__price {
+    font-size: 12px;
+  }
+  .quick-purchase__desc {
+    font-size: 14px;
   }
 
   .footer .row {

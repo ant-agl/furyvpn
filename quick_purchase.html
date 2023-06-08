@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="./css/link-font.css">
+  <link rel="stylesheet" href="./css/style.css">
+
+  <title>Быстрая покупка</title>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container">
+      <div class="row">
+        <a href="./index.html" class="logo">
+          <img src="./img/logo.png" class="logo__img">
+          <span class="logo__text">Fury VPN</span>
+        </a>
+        <ul class="nav__links">
+          <li>
+            <a class="nav__link link" href="./index.html#manual">Инструкция</a>
+          </li>
+          <li>
+            <a class="nav__link link" href="./index.html#tariffs">Тарифы</a>
+          </li>
+          <li>
+            <a class="nav__link link" href="https://t.me/gaborchak" target="_blank">Поддержка</a>
+          </li>
+          <li>
+            <a class="nav__link btn" href="./lk.html">Личный кабинет</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="quick-purchase">
+    <div class="container">
+      <h1 class="title">Быстрая покупка</h1>
+      <p class="quick-purchase__desc">Быстрая покупка позволяет купить подписку без регистрации!</p>
+
+      <form class="form-quick-purchase">
+        <input type="email" required class="lk__input quick-purchase__input" name="email"
+          placeholder="Введите ваш Email...">
+        <div class="quick-purchase__prices">
+          <div class="lk__tariff">
+            <div class="lk__period">1 месяц</div>
+            <div class="lk__price">198р.</div>
+            <button type="button" class="lk__link" data-value="1"><span>Купить</span></buttont>
+          </div>
+
+          <div class="lk__tariff">
+            <div class="lk__period">3 месяца</div>
+            <div class="lk__price">499р.</div>
+            <button type="button" class="lk__link" data-value="3"><span>Купить</span></buttont>
+          </div>
+          <div class="lk__tariff">
+            <div class="lk__period">6 месяцев</div>
+            <div class="lk__price">1499р.</div>
+            <button type="button" class="lk__link" data-value="6"><span>Купить</span></buttont>
+          </div>
+
+          <div class="lk__tariff">
+            <div class="lk__period">1 год</div>
+            <div class="lk__price">1999р.</div>
+            <button type="button" class="lk__link" data-value="12"><span>Купить</span></buttont>
+          </div>
+          <div class="lk__tariff lk__tariff_small">
+            <div class="lk__period">3 пробных дня</div>
+            <div class="lk__price">Бесплатно</div>
+            <button type="button" class="lk__link" data-value="free"><span>Получить</span></buttont>
+          </div>
+        </div>
+      </form>
+
+      <form class="form-promocode row">
+        <input type="text" name="promocode" class="lk__input" placeholder="Промокод...">
+        <button class="btn">Применить</button>
+      </form>
+
+      <p class="quick-purchase__subdesc">
+        Нажимая кнопку «Оплатить», вы соглашаетесь с <a href="./policy.txt">политикой
+          обработки персональных
+          данных</a> и с <a href="./offer.txt">договором оферты</a>
+        <br>
+        Внимание! «Быстрая покупка» никак не связана с подпиской в личном кабинете!
+      </p>
+    </div>
+  </section>
+
+  <script src="./js/jquery.min.js"></script>
+  <script>
+    $('.form-promocode').on('submit', function (e) {
+      e.preventDefault();
+      const data = {
+        promocode: $(this).find('[name="promocode"]').val().trim()
+      }
+      $.ajax({
+        type: "POST",
+        url: '',
+        data,
+        success: data => {
+          console.log(data);
+        },
+        error: xhr => {
+          console.log('Error', xhr);
+        }
+      })
+    });
+
+    $('[name="email"]').on('input', function () {
+      $(this).removeClass('error');
+    });
+
+    $('.form-quick-purchase button').on('click', function () {
+      const $form = $(this).closest('form');
+      const $email = $form.find('[name="email"]');
+      const value = $(this).data('value');
+      const data = {
+        email: $email.val().trim(),
+        value
+      }
+      console.log(data);
+
+      if (!validateEmail(data.email)) {
+        $email.addClass('error');
+        return;
+      }
+
+      $.ajax({
+        type: "POST",
+        url: '',
+        data,
+        success: data => {
+          console.log(data);
+        },
+        error: xhr => {
+          console.log('Error', xhr);
+        }
+      })
+    });
+
+    function validateEmail(email) {
+      var re =
+        /^(?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/;
+
+      return re.test(email);
+    }
+  </script>
+</body>
+
+</html>
